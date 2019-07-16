@@ -1,11 +1,12 @@
-'''Setup for making overall package
-'''
-__author__ = "Tommy Godfrey"
-__copyright__ = "Copyright 2019 United Kingdom Research and Innovation"
-__license__ = "BSD - see LICENSE file in top-level package directory"
+"""
+Setup for making overall package
+"""
+__author__ = 'Tommy Godfrey'
+__copyright__ = 'Copyright 2019 United Kingdom Research and Innovation'
+__license__ = 'BSD - see LICENSE file in top-level package directory'
 from setuptools import setup, find_packages
 
-with open("README.md") as readme_file:
+with open('README.md') as readme_file:
     _long_description = readme_file.read()
 
 setup(
@@ -21,7 +22,7 @@ setup(
     packages=find_packages(),
     include_package_data = True,
     python_requires='>=3',
-    install_requires="anytree",
+    install_requires='anytree',
     # See:
     # https://www.python.org/dev/peps/pep-0301/#distutils-trove-classification
     classifiers=[
