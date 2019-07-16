@@ -74,13 +74,15 @@ class DirectoryNode(Node):
         if not self.valid_node(query):
             raise ValueError(f"Invalid argument {query}")
 
-        node = None
+        node = self
         for part in query.split("/")[1:]:
             for child in node.children:
                 if part == child.name:
                     node = child
             if part != node.name:
                 return node
+        if node == self:
+            return
         return node
 
     def search_name(self, query):

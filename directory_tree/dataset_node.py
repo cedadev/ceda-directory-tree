@@ -50,7 +50,7 @@ class DatasetNode(DirectoryNode):
         if not self.valid_node(query):
             raise ValueError(f"Invalid argument {query}")
 
-        node = None
+        node = self
         match = None
         for part in query.split("/")[1:]:
             for child in node.children:
