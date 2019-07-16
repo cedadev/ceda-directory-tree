@@ -1,4 +1,4 @@
-from directory_tree import DirectoryNode
+from directory_tree.directory_node import DirectoryNode
 
 class DatasetNode(DirectoryNode):
     """
