@@ -29,8 +29,15 @@ class DatasetNode(DirectoryNode):
             raise ValueError(f"Invalid argument {child_name}")
 
         node = self
+        
+        # Strip leading slash
         if child_name[0] == "/":
             child_name = child_name[1:]
+        
+        # Strip trailing slash
+        if child_name.endswith("/"):
+            child_name = child_name[:-1]
+            
         for part in child_name.split("/"):
             for child in node.children:
                 if part == child.name:
@@ -58,6 +65,9 @@ class DatasetNode(DirectoryNode):
                     node = child
                     if node.dataset:
                         match = node
+
+                    # Once you have a match, break the loop
+                    break
             if part != node.name:
                 return match
         return match
