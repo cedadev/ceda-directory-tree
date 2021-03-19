@@ -161,63 +161,16 @@
 <p>This package can be used to optimise directory and dataset lookup tables.</p>
 <p>Speed comparison agains a recursive lookup approach, shortening the path by
 one each time and re-testing:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/urllib3/connection.py&quot;, line 170, in _new_conn
-    (self._dns_host, self.port), self.timeout, **extra_kw
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/urllib3/util/connection.py&quot;, line 96, in create_connection
-    raise err
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/urllib3/util/connection.py&quot;, line 86, in create_connection
-    sock.connect(sa)
-TimeoutError: [Errno 60] Operation timed out
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Directory Tree
+====================
+* Time to build tree for 18484 paths: 0:00:01.401795
+* Mean time per iteration for 1000 iterations:
+	0.023957004999999754s/it
 
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/urllib3/connectionpool.py&quot;, line 706, in urlopen
-    chunked=chunked,
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/urllib3/connectionpool.py&quot;, line 382, in _make_request
-    self._validate_conn(conn)
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/urllib3/connectionpool.py&quot;, line 1010, in _validate_conn
-    conn.connect()
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/urllib3/connection.py&quot;, line 353, in connect
-    conn = self._new_conn()
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/urllib3/connection.py&quot;, line 182, in _new_conn
-    self, &quot;Failed to establish a new connection: %s&quot; % e
-urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPSConnection object at 0x7fd73ebea6a0&gt;: Failed to establish a new connection: [Errno 60] Operation timed out
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/requests/adapters.py&quot;, line 449, in send
-    timeout=timeout
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/urllib3/connectionpool.py&quot;, line 756, in urlopen
-    method, url, error=e, _pool=self, _stacktrace=sys.exc_info()[2]
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/urllib3/util/retry.py&quot;, line 574, in increment
-    raise MaxRetryError(_pool, url, error or ResponseError(cause))
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host=&#39;cedaarchiveapp.ceda.ac.uk&#39;, port=443): Max retries exceeded with url: /cedaarchiveapp/fileset/download_conf/ (Caused by NewConnectionError(&#39;&lt;urllib3.connection.HTTPSConnection object at 0x7fd73ebea6a0&gt;: Failed to establish a new connection: [Errno 60] Operation timed out&#39;))
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/bin/directory-tree-speed-test&quot;, line 11, in &lt;module&gt;
-    load_entry_point(&#39;directory-tree&#39;, &#39;console_scripts&#39;, &#39;directory-tree-speed-test&#39;)()
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/directory_tree/examples/speed_test.py&quot;, line 93, in main
-    spot_mapping = SpotMapping()
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/directory_tree/examples/speed_test.py&quot;, line 38, in __init__
-    self._download_mapping()
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/directory_tree/examples/speed_test.py&quot;, line 45, in _download_mapping
-    response = requests.get(self.url)
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/requests/api.py&quot;, line 76, in get
-    return request(&#39;get&#39;, url, params=params, **kwargs)
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/requests/api.py&quot;, line 61, in request
-    return session.request(method=method, url=url, **kwargs)
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/requests/sessions.py&quot;, line 542, in request
-    resp = self.send(prep, **send_kwargs)
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/requests/sessions.py&quot;, line 655, in send
-    r = adapter.send(request, **kwargs)
-  File &quot;/Users/vdn73631/Documents/dev/directory-tree/venv/lib/python3.7/site-packages/requests/adapters.py&quot;, line 516, in send
-    raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host=&#39;cedaarchiveapp.ceda.ac.uk&#39;, port=443): Max retries exceeded with url: /cedaarchiveapp/fileset/download_conf/ (Caused by NewConnectionError(&#39;&lt;urllib3.connection.HTTPSConnection object at 0x7fd73ebea6a0&gt;: Failed to establish a new connection: [Errno 60] Operation timed out&#39;))
+Recursive Lookup
+====================
+* Time per iteration using recursive match for 1000 iterations:
+	3.9423498809999993s/it
 </pre></div>
 </div>
 <p><a class="reference external" href="https://github.com/cedadev/directory-tree/tree/master/directory_tree/examples/speed_test.py">Speed test code</a></p>
