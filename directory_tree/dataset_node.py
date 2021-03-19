@@ -1,15 +1,32 @@
+"""
+This extension of DirectoryNode is different in that when it is searched,
+it will not return the closest directory in the tree that matched.
+Instead it will return the closest directory in the tree that you actually added explicitly (dataset), not any implicit connecting directories that were added.
+
+For example if you added ``/neodc/arsf/1986/86_09`` with add_child, it will implicitly add:
+
+- ``/neodc/``
+- ``/neodc/arsf/``
+- ``/neodc/arsf/1986/``
+
+Then the directory that you actually asked to be added, `/neodc/arsf/1986/86_09`, will be added as a "dataset".
+When using search, only the closest matching dataset will be returned.
+
+Example:
+--------
+
+- ``search(/neodc/arsf/1986/86_09/file)` --> ``/neodc/arsf/1986/86_09/``
+- ``search(/neodc/arsf/1986/file)`` --> ``None``
+"""
+
 from directory_tree.directory_node import DirectoryNode
+from anytree import Node
+
 
 class DatasetNode(DirectoryNode):
     """
-    This extension of DirectoryNode is different in that when it is searched, it will not return the closest directory in the tree that matched.
-    Instead it will return the closest directory in the tree that you actually added explicitly (dataset), not any implicit connecting directories that were added.
-    For example if you added /neodc/arsf/1986/86_09 with add_child, it will implicitly add /neodc/, /neodc/arsf/, /neodc/arsf/1986/.
-    Then the directory that you actually asked to be added, /neodc/arsf/1986/86_09, will be added as a "dataset".
-    When using search only the closest matching dataset will be returned. 
-    Example:
-    search(/neodc/arsf/1986/86_09/file) returns /neodc/arsf/1986/86_09/
-    search(/neodc/arsf/1986/file) returns None
+    Subclass of ``directory_tree.directory_node.DirectoryNode`` to provide more
+    explicit dataset matching.
     """
     def __init__(self, name=None, parent=None, children=None, **kwargs):
         """
@@ -19,10 +36,12 @@ class DatasetNode(DirectoryNode):
         self.dataset = False
         super().__init__(name, parent=parent, children=children, **kwargs)
         
-    def add_child(self, child_name):
+    def add_child(self, child_name: str) -> None:
         """
         Adds a child to the node, will add any missing children needed to add the child.
-        Parameters: child_name (String): Name of dataset to be added to the node. Example: '/neodc/arsf/1986/86_09'.
+
+        :param child_name: Name of dataset to be added to the node. Example: ``/neodc/arsf/1986/86_09``
+
         """
 
         if not self.valid_node(child_name):
@@ -47,11 +66,13 @@ class DatasetNode(DirectoryNode):
                 node = child
         node.dataset = True
 
-    def search(self, query):
+    def search(self, query: str) -> Node:
         """
-        Search for a node using the tree nature of node's children. Returns the found node or the closest directory explicitly added when children were added.
-        Parameters: query (String): Name of child dataset to be searched for under the node. Example: '/neodc/arsf/1986/86_09'.
-        Returns: node (Node).
+        Search for a node using the tree nature of node's children.
+        Returns the found node or the closest directory explicitly added when children were added.
+
+        :param query: Name of child dataset to be searched for under the node. Example: ``/neodc/arsf/1986/86_09``
+        :returns: node
         """
 
         if not self.valid_node(query):

@@ -1,2 +1,4 @@
 # directory-tree
-Data structure for storing and searching directory trees
+Data structure for storing and searching directory trees.
+
+This repo provides a efficient process for matching paths against known directories.
