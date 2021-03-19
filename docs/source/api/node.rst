@@ -17,7 +17,3 @@ Dataset Node
 .. automodule:: directory_tree.dataset_node
     :members:
     :inherited-members: Node
-
-.. toctree::
-
-    index

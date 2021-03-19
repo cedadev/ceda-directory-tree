@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Node Types &mdash; directory-tree  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Welcome to directory-tree’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> directory-tree
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Welcome to directory-tree’s documentation!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Node Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-directory_tree.directory_node">Directory Node</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-searches">Example Searches:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-usage">Example Usage:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-directory_tree.dataset_node">Dataset Node</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">directory-tree</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Node Types</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api/node.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="node-types">
+<h1>Node Types<a class="headerlink" href="#node-types" title="Permalink to this headline">¶</a></h1>
+<p>The two different node types are documented below. You should use the <a class="reference internal" href="#dataset-node">Dataset Node</a>
+where explicit matches are required. <a class="reference internal" href="#directory-node">Directory Node</a> will provide more loose matches.</p>
+<div class="section" id="module-directory_tree.directory_node">
+<span id="directory-node"></span><h2>Directory Node<a class="headerlink" href="#module-directory_tree.directory_node" title="Permalink to this headline">¶</a></h2>
+<p>Directory Node creates a hierarchical search tree from directory paths.
+Directories are added implicitly with add_child. e.g.</p>
+<p>Adding <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/86_09</span></code> with add_child, it will implicitly add:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/neodc/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/neodc/arsf/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/86_09</span></code></p></li>
+</ul>
+<p>These names are what is returned with directory_path function, the actual nodes names are just the name of the directory and not the full path.
+When using search, the closest directory to the search term will be returned.</p>
+<div class="section" id="example-searches">
+<h3>Example Searches:<a class="headerlink" href="#example-searches" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">search(/neodc/arsf/1986/86_09/file)</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/86_09/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">search(/neodc/arsf/1986/file)</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">search(/neodc/arsf/1986/file/file1/file2/file3)</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">search(file)</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="example-usage">
+<h3>Example Usage:<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">directory_tree</span> <span class="o">=</span> <span class="n">DirectoryNode</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">path_list</span><span class="p">:</span>
+    <span class="n">directory_tree</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="n">directory_tree</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">test_path</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt id="directory_tree.directory_node.DirectoryNode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">directory_tree.directory_node.</span></code><code class="sig-name descname"><span class="pre">DirectoryNode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#directory_tree.directory_node.DirectoryNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class which provides methods for building and querying the tree</p>
+<dl class="py method">
+<dt id="directory_tree.directory_node.DirectoryNode.add_child">
+<code class="sig-name descname"><span class="pre">add_child</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#directory_tree.directory_node.DirectoryNode.add_child" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a child to the node, will add any missing children needed to add the child.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>child_name</strong> – Name of directory to be added to the node.
+Example: <cite>‘/neodc/arsf/1986/86_09</cite>’ will add: <code class="docutils literal notranslate"><span class="pre">neodc</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">arsf</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">1986</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">86_09</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="directory_tree.directory_node.DirectoryNode.directory_path">
+<code class="sig-name descname"><span class="pre">directory_path</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#directory_tree.directory_node.DirectoryNode.directory_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the full path of a directory node in the tree, not just the name of this directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="directory_tree.directory_node.DirectoryNode.search">
+<code class="sig-name descname"><span class="pre">search</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">anytree.node.node.Node</span><a class="headerlink" href="#directory_tree.directory_node.DirectoryNode.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a node using the tree nature of node’s children.
+Returns the found node or as close as it got.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>query</strong> – Name of child directory to be searched for under the node. Example: <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/86_09</span></code>.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>node (Node).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="directory_tree.directory_node.DirectoryNode.search_name">
+<code class="sig-name descname"><span class="pre">search_name</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#directory_tree.directory_node.DirectoryNode.search_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a node using the tree nature of node’s children.
+Returns the found node’s name or as close as it got.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>query</strong> – Name of child directory to be searched for under the node. Example: <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/86_09</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="directory_tree.directory_node.DirectoryNode.valid_node">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">valid_node</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#directory_tree.directory_node.DirectoryNode.valid_node" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – Name of node to be tested before adding to the tree</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Validity of test string</p>
+</dd>
+</dl>
+<p>Tests if a value is allowed to go into a directory tree.
+Nodes have to be non-empty strings.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-directory_tree.dataset_node">
+<span id="dataset-node"></span><h2>Dataset Node<a class="headerlink" href="#module-directory_tree.dataset_node" title="Permalink to this headline">¶</a></h2>
+<p>This extension of DirectoryNode is different in that when it is searched,
+it will not return the closest directory in the tree that matched.
+Instead it will return the closest directory in the tree that you actually added explicitly (dataset), not any implicit connecting directories that were added.</p>
+<p>For example if you added <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/86_09</span></code> with add_child, it will implicitly add:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/neodc/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/neodc/arsf/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/</span></code></p></li>
+</ul>
+<p>Then the directory that you actually asked to be added, <cite>/neodc/arsf/1986/86_09</cite>, will be added as a “dataset”.
+When using search, only the closest matching dataset will be returned.</p>
+<div class="section" id="example">
+<h3>Example:<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">search(/neodc/arsf/1986/86_09/file)`</span> <span class="pre">--&gt;</span> <span class="pre">``/neodc/arsf/1986/86_09/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">search(/neodc/arsf/1986/file)</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+</ul>
+<dl class="py class">
+<dt id="directory_tree.dataset_node.DatasetNode">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">directory_tree.dataset_node.</span></code><code class="sig-name descname"><span class="pre">DatasetNode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#directory_tree.dataset_node.DatasetNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subclass of <code class="docutils literal notranslate"><span class="pre">directory_tree.directory_node.DirectoryNode</span></code> to provide more
+explicit dataset matching.</p>
+<dl class="py method">
+<dt id="directory_tree.dataset_node.DatasetNode.add_child">
+<code class="sig-name descname"><span class="pre">add_child</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#directory_tree.dataset_node.DatasetNode.add_child" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a child to the node, will add any missing children needed to add the child.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>child_name</strong> – Name of dataset to be added to the node. Example: <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/86_09</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="directory_tree.dataset_node.DatasetNode.directory_path">
+<code class="sig-name descname"><span class="pre">directory_path</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#directory_tree.dataset_node.DatasetNode.directory_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the full path of a directory node in the tree, not just the name of this directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="directory_tree.dataset_node.DatasetNode.search">
+<code class="sig-name descname"><span class="pre">search</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">anytree.node.node.Node</span><a class="headerlink" href="#directory_tree.dataset_node.DatasetNode.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a node using the tree nature of node’s children.
+Returns the found node or the closest directory explicitly added when children were added.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>query</strong> – Name of child dataset to be searched for under the node. Example: <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/86_09</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>node</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="directory_tree.dataset_node.DatasetNode.search_name">
+<code class="sig-name descname"><span class="pre">search_name</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#directory_tree.dataset_node.DatasetNode.search_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a node using the tree nature of node’s children.
+Returns the found node’s name or as close as it got.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>query</strong> – Name of child directory to be searched for under the node. Example: <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/86_09</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="directory_tree.dataset_node.DatasetNode.valid_node">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">valid_node</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#directory_tree.dataset_node.DatasetNode.valid_node" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – Name of node to be tested before adding to the tree</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Validity of test string</p>
+</dd>
+</dl>
+<p>Tests if a value is allowed to go into a directory tree.
+Nodes have to be non-empty strings.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to directory-tree’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Tommy Godfrey.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
