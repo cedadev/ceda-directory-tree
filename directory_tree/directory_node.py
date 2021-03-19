@@ -138,8 +138,4 @@ class DirectoryNode(Node):
             raise ValueError(f"Invalid argument {query}")
 
         match = self.search(query)
-
-        if match:
-            return match.directory_path()
-        else:
-            return
+        return match.directory_path() if match else ""
