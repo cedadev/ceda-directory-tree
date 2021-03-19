@@ -23,6 +23,13 @@ setup(
     include_package_data = True,
     python_requires='>=3',
     install_requires='anytree',
+    extras_require={
+        'docs':[
+            'sphinx',
+            'sphinx-rtd-theme',
+            'sphinxcontrib-programoutput'
+        ]
+    },
     # See:
     # https://www.python.org/dev/peps/pep-0301/#distutils-trove-classification
     classifiers=[
@@ -32,5 +39,10 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3'
-    ]
+    ],
+    entry_points={
+        'console_scripts': [
+            'directory-tree-speed-test=directory_tree.examples.speed_test:main'
+        ]
+    }
 )
