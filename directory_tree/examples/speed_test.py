@@ -1,4 +1,3 @@
-# encoding: utf-8
 """
 Speed test using the archive spot directory to provide an example
 """
