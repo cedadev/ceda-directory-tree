@@ -123,7 +123,7 @@ def main():
     print('Recursive Lookup')
     print('=' * 20)
     results = timeit.timeit(lambda: spot_mapping.match_path(TEST_PATH), number=NUMBER_OF_ITERATIONS)
-    print(f'* Time per iteration using recursive match for {NUMBER_OF_ITERATIONS} iterations:\n\t{results}s/it')
+    print(f'* Mean time per iteration for {NUMBER_OF_ITERATIONS} iterations:\n\t{results}s/it')
 
 
 if __name__ == '__main__':
