@@ -8,7 +8,7 @@ Welcome to directory-tree's documentation!
 
 This package can be used to optimise directory and dataset lookup tables.
 
-Speed comparison agains a recursive lookup approach, shortening the path by
+Speed comparison against a recursive lookup approach, shortening the path by
 one each time and re-testing:
 
 .. program-output:: directory-tree-speed-test
