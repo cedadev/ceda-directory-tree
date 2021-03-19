@@ -84,6 +84,8 @@ class SpotMapping:
 
             path = os.path.dirname(path)
 
+        return path
+
 
 def main():
     #######################
