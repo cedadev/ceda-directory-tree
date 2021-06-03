@@ -209,12 +209,15 @@ When using search, the closest directory to the search term will be returned.</p
 <dd><p>Class which provides methods for building and querying the tree</p>
 <dl class="py method">
 <dt id="directory_tree.directory_node.DirectoryNode.add_child">
-<code class="sig-name descname"><span class="pre">add_child</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#directory_tree.directory_node.DirectoryNode.add_child" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">add_child</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#directory_tree.directory_node.DirectoryNode.add_child" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a child to the node, will add any missing children needed to add the child.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>child_name</strong> – Name of directory to be added to the node.
-Example: <cite>‘/neodc/arsf/1986/86_09</cite>’ will add: <code class="docutils literal notranslate"><span class="pre">neodc</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">arsf</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">1986</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">86_09</span></code></p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>child_name</strong> – Name of directory to be added to the node.
+Example: <cite>‘/neodc/arsf/1986/86_09</cite>’ will add: <code class="docutils literal notranslate"><span class="pre">neodc</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">arsf</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">1986</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">86_09</span></code></p></li>
+<li><p><strong>kwargs</strong> – Addional node attributes</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -305,11 +308,14 @@ When using search, only the closest matching dataset will be returned.</p>
 explicit dataset matching.</p>
 <dl class="py method">
 <dt id="directory_tree.dataset_node.DatasetNode.add_child">
-<code class="sig-name descname"><span class="pre">add_child</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#directory_tree.dataset_node.DatasetNode.add_child" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">add_child</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#directory_tree.dataset_node.DatasetNode.add_child" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a child to the node, will add any missing children needed to add the child.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>child_name</strong> – Name of dataset to be added to the node. Example: <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/86_09</span></code></p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>child_name</strong> – Name of dataset to be added to the node. Example: <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/86_09</span></code></p></li>
+<li><p><strong>kwargs</strong> – Additional attributes added to the node.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -336,6 +342,20 @@ Returns the found node or the closest directory explicitly added when children w
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>node</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="directory_tree.dataset_node.DatasetNode.search_all">
+<code class="sig-name descname"><span class="pre">search_all</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">anytree.node.node.Node</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#directory_tree.dataset_node.DatasetNode.search_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all dataset nodes in the path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>query</strong> – Name of child dataset to be searched for under the node. Example: <code class="docutils literal notranslate"><span class="pre">/neodc/arsf/1986/86_09</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>List of matching dataset nodes</p>
 </dd>
 </dl>
 </dd></dl>

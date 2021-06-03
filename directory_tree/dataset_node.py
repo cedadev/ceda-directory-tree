@@ -22,6 +22,8 @@ Example:
 from directory_tree.directory_node import DirectoryNode
 from anytree import Node
 
+from typing import List
+
 
 class DatasetNode(DirectoryNode):
     """
@@ -66,6 +68,30 @@ class DatasetNode(DirectoryNode):
                 child = DatasetNode(name=part, parent=node, **kwargs)
                 node = child
         node.dataset = True
+
+    def search_all(self, query: str) -> List[Node]:
+        """
+        Return all dataset nodes in the path
+
+        :param query: Name of child dataset to be searched for under the node. Example: ``/neodc/arsf/1986/86_09``
+        :return: List of matching dataset nodes
+        """
+
+        if not self.valid_node(query):
+            raise ValueError(f"Invalid argument {query}")
+
+        node = self
+        matches = []
+        for part in query.split("/")[1:]:
+            for child in node.children:
+                if part == child.name:
+                    node = child
+                    if node.dataset:
+                        matches.append(node)
+
+            if part != node.name:
+                return matches
+        return matches
 
     def search(self, query: str) -> Node:
         """
