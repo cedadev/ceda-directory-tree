@@ -80,12 +80,13 @@ class DirectoryNode(Node):
 
         return f'{"/".join(names)}/'
         
-    def add_child(self, child_name: str) -> None:
+    def add_child(self, child_name: str, **kwargs) -> None:
         """
         Adds a child to the node, will add any missing children needed to add the child.
 
         :param child_name: Name of directory to be added to the node.
                             Example: `'/neodc/arsf/1986/86_09`' will add: ``neodc`` -> ``arsf`` -> ``1986`` -> ``86_09``
+        :param kwargs: Addional node attributes
         """
         if not self.valid_node(child_name):
             raise ValueError(f"Invalid argument {child_name}")
@@ -98,7 +99,7 @@ class DirectoryNode(Node):
                 if part == child.name:
                     node = child
             if part != node.name:
-                child = DirectoryNode(name=part, parent=node)
+                child = DirectoryNode(name=part, parent=node, **kwargs)
                 node = child
 
     def search(self, query: str) -> Node:
