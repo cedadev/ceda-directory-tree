@@ -36,11 +36,12 @@ class DatasetNode(DirectoryNode):
         self.dataset = False
         super().__init__(name, parent=parent, children=children, **kwargs)
         
-    def add_child(self, child_name: str) -> None:
+    def add_child(self, child_name: str, **kwargs) -> None:
         """
         Adds a child to the node, will add any missing children needed to add the child.
 
         :param child_name: Name of dataset to be added to the node. Example: ``/neodc/arsf/1986/86_09``
+        :param kwargs: Additional attributes added to the node.
 
         """
 
@@ -62,7 +63,7 @@ class DatasetNode(DirectoryNode):
                 if part == child.name:
                     node = child
             if part != node.name:
-                child = DatasetNode(name=part, parent=node)
+                child = DatasetNode(name=part, parent=node, **kwargs)
                 node = child
         node.dataset = True
 
