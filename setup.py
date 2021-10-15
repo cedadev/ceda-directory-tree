@@ -10,12 +10,12 @@ with open('README.md') as readme_file:
     _long_description = readme_file.read()
 
 setup(
-    name='directory_tree',
-    version='0.1.0',
+    name='ceda-directory_tree',
+    version='1.0.0',
     description='Python package to create a virtual tree data structure to represent a directory tree to be used for efficient search',
     author='Tommy Godfrey',
     author_email='tommy.godfrey@stfc.ac.uk',
-    url='https://github.com/cedadev/directory-tree',
+    url='https://github.com/cedadev/ceda-directory-tree',
     long_description=_long_description,
     long_description_content_type='text/markdown',
     license='BSD - See LICENSE file for details',
