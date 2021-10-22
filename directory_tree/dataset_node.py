@@ -53,13 +53,11 @@ class DatasetNode(DirectoryNode):
         node = self
         
         # Strip leading slash
-        if child_name[0] == "/":
-            child_name = child_name[1:]
-        
+        child_name = child_name.lstrip("/")
+
         # Strip trailing slash
-        if child_name.endswith("/"):
-            child_name = child_name[:-1]
-            
+        child_name = child_name.rstrip("/")
+
         for part in child_name.split("/"):
             for child in node.children:
                 if part == child.name:
