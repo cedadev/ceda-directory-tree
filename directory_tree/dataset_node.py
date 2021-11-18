@@ -60,6 +60,11 @@ class DatasetNode(DirectoryNode):
 
         for part in child_name.split("/"):
             for child in node.children:
+                if child_name == child.name:
+                    child = DatasetNode(name=part, parent=node, **kwargs)
+                    node = child
+                    node.dataset = True
+                    return
                 if part == child.name:
                     node = child
             if part != node.name:
