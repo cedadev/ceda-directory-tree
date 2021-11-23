@@ -28,6 +28,10 @@ setup(
             'sphinx',
             'sphinx-rtd-theme',
             'sphinxcontrib-programoutput'
+        ],
+        'dev': [
+            'pytest',
+            'requests'
         ]
     },
     # See:
