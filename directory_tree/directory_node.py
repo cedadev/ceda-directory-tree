@@ -52,6 +52,13 @@ class DirectoryNode(Node):
             name = ""
         super().__init__(name, parent=parent, children=children, **kwargs)
 
+    def update(self, **kwargs):
+        """
+        Update the values of an existing node with new values.
+        """
+        for key, value in kwargs.items():
+            self.__setattr__(key, value)
+
     @staticmethod
     def valid_node(value: str) -> bool:
         """
