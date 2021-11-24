@@ -70,6 +70,8 @@ class DatasetNode(DirectoryNode):
             if part != node.name:
                 child = DatasetNode(name=part, parent=node, **kwargs)
                 node = child
+        if not node.dataset:
+            node.update(**kwargs)
         node.dataset = True
 
     def search_all(self, query: str) -> List[Node]:
