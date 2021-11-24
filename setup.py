@@ -11,7 +11,7 @@ with open('README.md') as readme_file:
 
 setup(
     name='ceda-directory_tree',
-    version='1.0.1',
+    version='1.0.2',
     description='Python package to create a virtual tree data structure to represent a directory tree to be used for efficient search',
     author='Tommy Godfrey',
     author_email='tommy.godfrey@stfc.ac.uk',
