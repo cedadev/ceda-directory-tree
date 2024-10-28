@@ -5,7 +5,9 @@ description = "Python package to create a virtual tree data structure to represe
 authors = ["Tommy Godfrey, Daniel Westwood <daniel.westwood@stfc.ac.uk>"]
 license = "{file='LICENSE'}"
 readme = "README.md"
-url = 'https://github.com/cedadev/ceda-directory-tree'
+
+[project.urls]
+Repository = "https://github.com/cedadev/ceda-directory-tree"
 
 classifiers = [
     'Development Status :: 3 - Alpha',
@@ -23,6 +25,7 @@ sphinx-rtd-theme = "^3.0.1"
 pytest = "^8.3.3"
 requests = "^2.32.3"
 anytree = "^2.12.1"
+tox = "^4.23.2"
 
 [tool.poetry.scripts]
 directory-tree-speed-test = "directory_tree.examples.speed_test:main"
