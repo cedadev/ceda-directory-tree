@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "directory-tree"
-version = "1.1.3"
+version = "1.1.4"
 description = "Python package to create a virtual tree data structure to represent a directory tree to be used for efficient search"
 authors = ["Tommy Godfrey, Daniel Westwood <daniel.westwood@stfc.ac.uk>"]
 license = "{file='LICENSE'}"

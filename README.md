@@ -10,6 +10,7 @@ This repo provides a efficient process for matching paths against known director
 
 ## Installation
 
+Older versions:
 `pip install ceda-directory-tree`
 
 
