@@ -1,6 +1,7 @@
 
 [![Test](https://github.com/cedadev/ceda-directory-tree/actions/workflows/test.yml/badge.svg)](https://github.com/cedadev/ceda-directory-tree/actions/workflows/test.yml)
 ![Static Badge](https://img.shields.io/badge/cci%20tagger%20workflow-8AD6F6)
+[![PyPI version](https://badge.fury.io/py/ceda-directory-tree.svg)](https://pypi.python.org/pypi/ceda-directory-tree/)
 
 # CEDA directory-tree
 Data structure for storing and searching directory trees.
