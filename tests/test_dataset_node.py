@@ -10,7 +10,7 @@ __contact__ = 'richard.d.smith@stfc.ac.uk'
 
 import pytest
 
-from directory_tree import DatasetNode
+from ceda_directory_tree import DatasetNode
 
 
 @pytest.fixture

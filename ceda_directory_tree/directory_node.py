@@ -25,12 +25,12 @@ Example Usage:
 
 .. code-block:: python
 
-    directory_tree = DirectoryNode()
+    ceda_directory_tree = DirectoryNode()
 
     for path in path_list:
-        directory_tree.add_child(path)
+        ceda_directory_tree.add_child(path)
 
-    directory_tree.search(test_path)
+    ceda_directory_tree.search(test_path)
 
 
 """
