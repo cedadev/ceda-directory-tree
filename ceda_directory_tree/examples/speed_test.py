@@ -9,7 +9,7 @@ __license__ = 'BSD - see LICENSE file in top-level package directory'
 __contact__ = 'richard.d.smith@stfc.ac.uk'
 
 
-from directory_tree import DatasetNode
+from ceda_directory_tree import DatasetNode
 import requests
 import timeit
 import os
@@ -100,11 +100,11 @@ def main():
     #######################
 
     start = datetime.now()
-    directory_tree = DatasetNode()
+    ceda_directory_tree = DatasetNode()
 
     # Build the tree
     for path in spot_mapping.path_list:
-        directory_tree.add_child(path)
+        ceda_directory_tree.add_child(path)
 
     end = datetime.now()
 
@@ -113,7 +113,7 @@ def main():
     print(f'* Time to build tree for {len(spot_mapping.path_list)} paths: {end - start}')
 
     # Test matching
-    results = timeit.timeit(lambda: directory_tree.search_name(TEST_PATH), number=NUMBER_OF_ITERATIONS)
+    results = timeit.timeit(lambda: ceda_directory_tree.search_name(TEST_PATH), number=NUMBER_OF_ITERATIONS)
     print(f'* Mean time per iteration for {NUMBER_OF_ITERATIONS} iterations:\n\t{results}s/it')
 
     ###########################

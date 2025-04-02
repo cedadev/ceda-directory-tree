@@ -19,7 +19,7 @@ Example:
 - ``search(/neodc/arsf/1986/file)`` --> ``None``
 """
 
-from directory_tree.directory_node import DirectoryNode
+from ceda_directory_tree.directory_node import DirectoryNode
 from anytree import Node
 
 from typing import List
@@ -27,12 +27,12 @@ from typing import List
 
 class DatasetNode(DirectoryNode):
     """
-    Subclass of ``directory_tree.directory_node.DirectoryNode`` to provide more
+    Subclass of ``ceda_directory_tree.directory_node.DirectoryNode`` to provide more
     explicit dataset matching.
     """
     def __init__(self, name=None, parent=None, children=None, **kwargs):
         """
-        Creates a new dataset node, uses parent's constructor (directory_tree.DirectoryNode).
+        Creates a new dataset node, uses parent's constructor (ceda_directory_tree.DirectoryNode).
         If no name is given it is assumed that this is the root node of the tree and name is an empty string.
         """
         self.dataset = False
